@@ -1,9 +1,11 @@
 'use client';
+import { getColorTheme } from '@/src/function/common';
 import React from 'react';
 import {useState} from 'react';
 import root from 'react-shadow';
-function HsTogglerButton({item}: {item: Toggleable}) {
+function HsTogglerButton({item, theme}: {item: Toggleable, theme?: string}) {
   const [active, setActive] = useState(item.default);
+  const colorset = getColorTheme(theme ? theme : '');
   function toggle() {
     if(active) {
       item.off();
@@ -29,32 +31,33 @@ function HsTogglerButton({item}: {item: Toggleable}) {
           border: none;
           transition: all 0.5s ease;
           outline: none;
-          border-left: 1px solid #C780FA;
-          color: #8740BA;
+          border-left: 1px solid rgb(${colorset[0]},${colorset[1]},${colorset[2]});
+          color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
         }
         .hs-toggle-button:hover {
           background: rgba(255,255,255,0.2);
-          box-shadow: 0 0 20px 0 rgba(195,128,250,0.7);
+          box-shadow: 0 0 20px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.7);
         }
         .hs-toggle-button.active {
           background: rgba(255,255,255,0.2);
-          box-shadow: 0 0 20px 0 rgba(195,128,250,0.7);
+          box-shadow: 0 0 20px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.7);
         }
         .hs-toggle-button.active:hover {
           background: rgba(255,255,255,0);
-          box-shadow: 0 0 20px 0 rgba(195,128,250,0);
+          box-shadow: 0 0 20px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0);
         }
       `}</style>
     </button>
   )
 }
 
-export function HSToggler({width, items}: {width: number, items: Toggleable[]}) {
+export function HSToggler({width, items, theme}: {width: number, items: Toggleable[], theme?: string}) {
+  const colorset = getColorTheme(theme ? theme : '');
   return (
     <root.div>
       <div className="hs-toggler">
         {items.map((item: Toggleable, index: number) =>
-        <HsTogglerButton item={item} key={index}/>)}
+        <HsTogglerButton theme={theme} item={item} key={index}/>)}
         <style>{`
           button {
             background: transparent;
@@ -66,11 +69,11 @@ export function HSToggler({width, items}: {width: number, items: Toggleable[]}) 
           .hs-toggler {
             background: #FFF;
             display: flex;
-            border: 1px solid #C780FA;
+            border: 1px solid rgb(${colorset[0]},${colorset[1]},${colorset[2]});
             border-radius: 5px;
             min-height: 25px;
             justify-content: space-between;
-            background: #E3ACF9;
+            background: rgb(${colorset[6]},${colorset[7]},${colorset[8]});
             width: ${width}px;
           }
         `}</style>

@@ -4,16 +4,18 @@ import { useState } from "react";
 import HSShelf from "./HSShelf";
 import root from 'react-shadow';
 import DoubleArrow from "../../item/DoubleArrow";
+import { getColorTheme } from '@/src/function/common';
 
-export function HSDrawer({items, background, right}: {items: HSShelfItem[], background?: string, right?: boolean}) {
+export function HSDrawer({items, theme}: {items: HSShelfItem[], theme?: string}) {
   const [active, setActive] = useState(false);
   const [opened, setOpened] = useState<HSShelfItem|null>(null);
+  const colorset = getColorTheme(theme ? theme : '');
 
   return (
     <root.div>
       <nav className={`hs-nav ${active ? 'active' : 'deactive'}`}>
-        <button className="opener" onClick={() => setActive(!active)}><div className="opener-border">{active ? <DoubleArrow rotate={270}/> : <DoubleArrow rotate={90}/>}</div></button>
-        {items.map((shelf: HSShelfItem, index: number) => <HSShelf key={index} opened={opened != null && opened.text === shelf.text} setOpened={setOpened} shelf={shelf}/>)}
+        <button className="opener" onClick={() => setActive(!active)}><div className="opener-border">{active ? <DoubleArrow theme={theme} rotate={270}/> : <DoubleArrow theme={theme} rotate={90}/>}</div></button>
+        {items.map((shelf: HSShelfItem, index: number) => <HSShelf theme={theme} key={index} opened={opened != null && opened.text === shelf.text} setOpened={setOpened} shelf={shelf}/>)}
         <style>{`
           button {
             background: transparent;
@@ -34,16 +36,15 @@ export function HSDrawer({items, background, right}: {items: HSShelfItem[], back
           }
           .hs-nav {
             position: fixed; 
-            left: ${right ? 'auto' : 0};
-            right: ${right ? 0 : 'auto'};
+            left: 0;
             top: 0;
             height: 100vh;
             width: 330px;
             background: #FFF;
-            color: #8740BA;
+            color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
             z-index: 100;
             padding: 10px;
-            border-right: 1px solid #E3ACF9;
+            border-right: 1px solid rgb(${colorset[6]},${colorset[7]},${colorset[8]});
           }
           .active {
             animation-name: open-nav;
@@ -85,9 +86,9 @@ export function HSDrawer({items, background, right}: {items: HSShelfItem[], back
             border-radius: 0 3px 3px 0;
           }
           .opener-border {
-            border-top: 1px groove #E3ACF9;
-            border-bottom: 1px groove #E3ACF9;
-            border-right: 1px groove #E3ACF9;
+            border-top: 1px groove rgb(${colorset[6]},${colorset[7]},${colorset[8]});
+            border-bottom: 1px groove rgb(${colorset[6]},${colorset[7]},${colorset[8]});
+            border-right: 1px groove rgb(${colorset[6]},${colorset[7]},${colorset[8]});
             border-radius: 0 3px 3px 0;
             padding: 3px 0;
             display: flex;

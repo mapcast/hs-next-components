@@ -1,13 +1,15 @@
 'use client'
+import { getColorTheme } from '@/src/function/common';
 import React from 'react';
 import { useRef, useState } from 'react';
 import root from 'react-shadow';
 
-export function HSInput({type, value, setValue, disabled, placeholder, pushEnter}: 
+export function HSInput({type, value, setValue, theme, disabled, placeholder, pushEnter}: 
   {type: 'text'|'number', value: string, setValue: (val: string) => void,
-    disabled?: boolean, placeholder?: string, pushEnter?: () => void}) {
+    theme?: string, disabled?: boolean, placeholder?: string, pushEnter?: () => void}) {
   const [focused, setFocused] = useState(false);
   const ref = useRef<HTMLInputElement|null>(null);
+  const colorset = getColorTheme(theme ? theme : '');
 
   function handleFocus() {
     if(!focused) setFocused(true);
@@ -29,7 +31,7 @@ export function HSInput({type, value, setValue, disabled, placeholder, pushEnter
 
   return (
     <root.div>
-      <div style={{position: 'relative', borderBottom: '1px solid #C780FA', paddingTop: 10, paddingBottom: 2}}>
+      <div style={{position: 'relative', borderBottom: `1px solid rgb(${colorset[0]},${colorset[1]},${colorset[2]}`, paddingTop: 10, paddingBottom: 2}}>
         {placeholder ? <span onClick={clickPlaceholder} className={`big-input-placeholder ${focused || value.length > 0 ? 'focused' : ''}`}>
           {placeholder}
         </span> : <></>}
@@ -44,7 +46,7 @@ export function HSInput({type, value, setValue, disabled, placeholder, pushEnter
       <style>{`
         .big-input-placeholder {
           position: absolute;
-          color: #C780FA;
+          color: rgb(${colorset[0]},${colorset[1]},${colorset[2]});
           font-size: 14px;
           top: 10px;
           left: 2px;

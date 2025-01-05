@@ -1,8 +1,10 @@
+import { getColorTheme } from '@/src/function/common';
 import React from 'react';
 import {useEffect} from 'react';
 import root from 'react-shadow';
 
-export function HSSimpleToast({text, active, close}: {text: string, active: boolean, close: () => void}) {
+export function HSSimpleToast({text, active, close, theme}: {text: string, active: boolean, close: () => void, theme?: string}) {
+  const colorset = getColorTheme(theme ? theme : '');
   useEffect(() => {
     if(active) {
       setTimeout(() => {
@@ -25,7 +27,7 @@ export function HSSimpleToast({text, active, close}: {text: string, active: bool
           left: 50%;
           transform: translateX(-50%);
           background-color: #FFF;
-          color: #8740BA;
+          color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
           font-weight: 800;
           font-size: 14px;
           padding: 0 20px;
@@ -35,7 +37,7 @@ export function HSSimpleToast({text, active, close}: {text: string, active: bool
           opacity: 0;
           transition: all 0.5s ease-out;
           height: 65px;
-          box-shadow: 0 0 25px 0 rgba(195,128,250,0.7);
+          box-shadow: 0 0 25px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.7);
         }
         
         .simple-toast.active {

@@ -2,8 +2,11 @@
 import React from 'react';
 
 import SimpleArrow from "../../item/SimpleArrow";
+import { getColorTheme } from '@/src/function/common';
 
-export default function HSShelf({shelf, opened, setOpened}: {shelf: HSShelfItem, opened: boolean, setOpened: (shelf: HSShelfItem|null) => void}) {
+export default function HSShelf({shelf, opened, setOpened, theme}: {shelf: HSShelfItem, opened: boolean, setOpened: (shelf: HSShelfItem|null) => void, theme?: string}) {
+  const colorset = getColorTheme(theme ? theme : '');
+  
   return (
     <div className={`shelves ${opened ? 'opened' : 'closed'}`}>
       <div className="main-shelf" onClick={() => setOpened(opened ? null : shelf)}>
@@ -13,7 +16,7 @@ export default function HSShelf({shelf, opened, setOpened}: {shelf: HSShelfItem,
         </div>
         <div className="element-to-center">
           {!opened ? 
-          <SimpleArrow rotate={90}/> : <></>}
+          <SimpleArrow theme={theme} rotate={90}/> : <></>}
         </div>
       </div>
       <ul className={`sub-drawer ${opened ? 'active' : ''}`}>
@@ -37,10 +40,10 @@ export default function HSShelf({shelf, opened, setOpened}: {shelf: HSShelfItem,
           transition: all 0.3s ease;
         }
         .opened > .main-shelf {
-          background: #D790FA;
+          background: rgb(${colorset[0]},${colorset[1]},${colorset[2]});
         }
         .main-shelf:hover {
-          background: #D790FA;
+          background: rgb(${colorset[0]},${colorset[1]},${colorset[2]});
         }
         .sub-drawer {
           background: #FFF;
@@ -67,7 +70,7 @@ export default function HSShelf({shelf, opened, setOpened}: {shelf: HSShelfItem,
         }
         .sub-shelf:hover {
           font-weight: 800;
-          background: rgba(195,128,250,0.3);
+          background: rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.3);
         }
       `}</style>
     </div>

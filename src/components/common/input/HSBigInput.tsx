@@ -1,11 +1,13 @@
+import { getColorTheme } from '@/src/function/common';
 import React from 'react';
 import { useRef, useState } from "react";
 import root from 'react-shadow';
 
-export function HSBigInput({fieldName, fieldValue, setFieldValue, imageSrc, width, reduceBottomPadding, type, disabled}: 
-  {fieldName: string, fieldValue: string, setFieldValue: Function, imageSrc?: string, width?: number, reduceBottomPadding?: boolean, type?: string, disabled?: boolean}) {
+export function HSBigInput({fieldName, fieldValue, setFieldValue, imageSrc, width, reduceBottomPadding, theme, type, disabled}: 
+  {fieldName: string, fieldValue: string, setFieldValue: Function, imageSrc?: string, width?: number, reduceBottomPadding?: boolean, theme?: string, type?: string, disabled?: boolean}) {
   const [focused, setFocused] = useState(false);
   const ref = useRef<HTMLInputElement|null>(null);
+  const colorset = getColorTheme(theme ? theme : '');
 
   function handleFocus() {
     if(!focused) setFocused(true);
@@ -38,7 +40,7 @@ export function HSBigInput({fieldName, fieldValue, setFieldValue, imageSrc, widt
           .big-input-wrap {
             height: 60px; 
             display: flex;
-            border-bottom: 2px solid #C780FA;
+            border-bottom: 2px solid rgb(${colorset[0]},${colorset[1]},${colorset[2]});
           }
           .big-input-wrap.reduce-padding {
             height: 50px;
@@ -69,11 +71,11 @@ export function HSBigInput({fieldName, fieldValue, setFieldValue, imageSrc, widt
             background: transparent;
             border: none;
             width: calc(100% - 17px);
-            color: #8740BA;
+            color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
           }
           .big-input-placeholder {
             position: absolute;
-            color: #C780FA;
+            color: rgb(${colorset[0]},${colorset[1]},${colorset[2]});
             font-size: 12px;
             top: 24px;
             left: 2px;

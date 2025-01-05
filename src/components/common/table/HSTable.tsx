@@ -2,14 +2,16 @@ import React from 'react';
 import { useState } from "react"
 import SmallArrow from "../item/SmallArrow";
 import { HSSimpleLoading } from '../HSSimpleLoading';
+import { getColorTheme } from '@/src/function/common';
 export {HSSimpleLoading} from '../HSSimpleLoading';
 
-export function HSTable({headers, list, width, loading, handleSort, handleClickData}: 
+export function HSTable({headers, list, width, theme, loading, handleSort, handleClickData}: 
   {headers:HSTableHeader[], list: any[], 
-    width?: Array<string|number>, loading?: boolean,
+    width?: Array<string|number>, theme?: string, loading?: boolean,
     handleSort?: (sort: HSSort) => void, handleClickData?: (header: HSTableHeader, data: string) => void}) {
   const [sorted, setSorted] = useState<HSTableHeader|null>(null);
   const [direction, setDirection] = useState(true);
+  const colorset = getColorTheme(theme ? theme : '');
 
   function sort(header: HSTableHeader) {
     if(handleSort) {
@@ -41,7 +43,7 @@ export function HSTable({headers, list, width, loading, handleSort, handleClickD
       <thead>
         <tr style={{
           background: 'transparent',
-          borderBottom: '1px groove #E7A0FF'
+          borderBottom: '1px groove rgb(${colorset[9]},${colorset[10]},${colorset[11]})'
         }}>
           {headers.map((header: HSTableHeader, index: number) => 
           <th className={handleSort ? 'clickable' : ''}
@@ -66,7 +68,7 @@ export function HSTable({headers, list, width, loading, handleSort, handleClickD
       <tbody>
         {list.map((data: any, listIndex: number) => 
           <tr key={data.id ? data.id : listIndex} style={{
-            background: listIndex % 2 == 0 ? 'rgba(195,128,250,0.05)' : 'rgba(195,128,250,0.15)',
+            background: listIndex % 2 == 0 ? `rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.05)` : `rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.15)`,
           }}>
             {headers.map((header: HSTableHeader, tdIndex: number) => 
             <td className={handleClickData && header.clickable ? 'clickable' : ''} key={tdIndex} 
@@ -93,7 +95,7 @@ export function HSTable({headers, list, width, loading, handleSort, handleClickD
           {loading ? <tr><td colSpan={headers.length} style={{padding: 10}}><HSSimpleLoading/></td></tr>
           : list.length === 0 ? <tr><td colSpan={headers.length} style={{padding: 10}}><center>No Information.</center></td></tr> : <></>}
       </tbody>
-      <style jsx>{`
+      <style>{`
         table {
           border-spacing: 0px;
           border-style: none;
@@ -104,7 +106,7 @@ export function HSTable({headers, list, width, loading, handleSort, handleClickD
           text-overflow:ellipsis; 
           overflow:hidden; 
           white-space:nowrap;
-          box-shadow: 0 0 5px 0 rgba(195,128,250,0.5);
+          box-shadow: 0 0 5px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.5);
         }
         th {
           border-spacing: 0px;
@@ -114,14 +116,14 @@ export function HSTable({headers, list, width, loading, handleSort, handleClickD
           white-space:nowrap;
           padding: 8px 10px;
           fontWeight: 800;
-          color: #8740BA;
+          color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
           text-align: left;
           font-size: 16px;
           transition: all 0.3s ease;
         }
         td {
           border-spacing: 0px;
-          color: #8740BA;
+          color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
           border-style: none;
           text-overflow:ellipsis; 
           overflow:hidden; 
@@ -130,7 +132,7 @@ export function HSTable({headers, list, width, loading, handleSort, handleClickD
           transition: all 0.3s ease;
         }
         .clickable:hover {
-          color: rgb(195,128,250);
+          color: rgb(${colorset[0]},${colorset[1]},${colorset[2]});
         }
       `}</style>
     </table>

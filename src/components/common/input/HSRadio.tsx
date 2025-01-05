@@ -1,7 +1,9 @@
+import { getColorTheme } from '@/src/function/common';
 import React from 'react';
 import root from 'react-shadow';
 
-export function HSRadio({selected, value, text, onClick}: {selected: string, value: string, text?: string, onClick: (val: string) => void}) {
+export function HSRadio({selected, value, text, theme, onClick}: {selected: string, value: string, text?: string, theme?: string, onClick: (val: string) => void}) {
+  const colorset = getColorTheme(theme ? theme : '');
   return (
     <root.div>
       <div style={{display: 'inline-block', padding: '2px 0'}}>
@@ -16,13 +18,13 @@ export function HSRadio({selected, value, text, onClick}: {selected: string, val
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              boxShadow: selected === value ? '0 0 8px 0 rgba(195,128,250,0.5)' : 'none',
-              background: selected === value ? '#C780FA' : '#FFF',
+              boxShadow: selected === value ? `0 0 8px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.5)` : 'none',
+              background: selected === value ? `rgb(${colorset[0]},${colorset[1]},${colorset[2]})` : '#FFF',
             }
           }>
             <div style={{width: '8px', aspectRatio: '1/1', background: '#FFF', borderRadius: '50%'}}/>
           </div>
-          <span style={{color: '#C780FA'}}>{text}</span>
+          <span style={{color: `rgb(${colorset[9]},${colorset[10]},${colorset[11]})`}}>{text}</span>
         </label>
       </div>
     </root.div>

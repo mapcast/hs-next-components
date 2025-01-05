@@ -1,10 +1,12 @@
+import { getColorTheme } from '@/src/function/common';
 import React from 'react';
 import { useRef, useState } from "react";
 
-export function HSTextArea({fieldName, fieldValue, setFieldValue, width, height}: 
-  {fieldName: string, fieldValue: string, setFieldValue?: Function, width?: number, height?:number}) {
+export function HSTextArea({fieldName, fieldValue, setFieldValue, theme, width, height}: 
+  {fieldName: string, fieldValue: string, setFieldValue?: Function, theme?: string, width?: number, height?:number}) {
   const [focused, setFocused] = useState(false);
   const ref = useRef<HTMLTextAreaElement|null>(null);
+  const colorset = getColorTheme(theme ? theme : '');
 
   function handleFocus() {
     if(!focused) setFocused(true);
@@ -63,17 +65,17 @@ export function HSTextArea({fieldName, fieldValue, setFieldValue, width, height}
         <textarea className="hs-textarea slight-scroll" ref={ref} spellCheck="false" value={fieldValue} 
         onChange={(e) => setFieldValue ? setFieldValue(e.target.value) : {}} onKeyDown={handleKeyDown} onFocus={handleFocus} onBlur={handleBlur} disabled={!setFieldValue ? true : false}/>
       </div>
-      <style jsx>{`
+      <style>{`
         .hs-textarea-wrap {
           display: flex;
           background: transparent;
-          border: 2px groove #E3ACF9;
+          border: 2px groove rgb(${colorset[6]},${colorset[7]},${colorset[8]});
         }
         .hs-textarea-input-wrap {
           flex: 1; 
           padding: 15px 0 2px 0;
           position: relative;
-          box-shadow: 0 0 15px 0 rgba(195,128,250,0.3);
+          box-shadow: 0 0 15px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.3);
         }
         .hs-textarea {
           border: none;
@@ -82,14 +84,14 @@ export function HSTextArea({fieldName, fieldValue, setFieldValue, width, height}
           resize: none;
           outline: none;
           font-size: 12px;
-          color: #8740BA;
+          color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
           padding: 0 5px 0 5px;
           background: transparent;
           tab-size: 2;
         }
         .hs-textarea-title {
           position: absolute;
-          color: #A760DA;
+          color: rgb(${colorset[3]},${colorset[4]},${colorset[5]});
           font-size: 9px;
           top: 0;
           left: 0;
@@ -120,47 +122,47 @@ export function HSTextArea({fieldName, fieldValue, setFieldValue, width, height}
         }
         
         .slight-scroll::-webkit-scrollbar-track:hover {
-          background-color: rgba(195,128,250,.05);
-          box-shadow: inset 1px 0 0 rgba(195,128,250,.1)
+          background-color: rgba(${colorset[0]},${colorset[1]},${colorset[2]},.05);
+          box-shadow: inset 1px 0 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.1)
         }
         
         .slight-scroll::-webkit-scrollbar-track:horizontal:hover {
-          box-shadow: inset 0 1px 0 rgba(195,128,250,.1)
+          box-shadow: inset 0 1px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.1)
         }
         
         .slight-scroll::-webkit-scrollbar-track:active {
-          background-color: rgba(195,128,250,.05);
-          box-shadow: inset 1px 0 0 rgba(195,128,250,.14),inset -1px 0 0 rgba(195,128,250,.07)
+          background-color: rgba(${colorset[0]},${colorset[1]},${colorset[2]},.05);
+          box-shadow: inset 1px 0 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.14),inset -1px 0 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.07)
         }
         
         .slight-scroll::-webkit-scrollbar-track:horizontal:active {
-          box-shadow: inset 0 1px 0 rgba(195,128,250,.14),inset 0 -1px 0 rgba(195,128,250,.07)
+          box-shadow: inset 0 1px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.14),inset 0 -1px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.07)
         }
         
         .slight-scroll::-webkit-scrollbar-thumb {
-          background-color: rgba(195,128,250,.2);
+          background-color: rgba(${colorset[0]},${colorset[1]},${colorset[2]},.2);
           background-clip: padding-box;
           border: solid transparent;
           border-width: 1px 1px 1px 6px;
           min-height: 28px;
           padding: 100px 0 0;
-          box-shadow: inset 1px 1px 0 rgba(195,128,250,.1),inset 0 -1px 0 rgba(195,128,250,.07)
+          box-shadow: inset 1px 1px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.1),inset 0 -1px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.07)
         }
         
         .slight-scroll::-webkit-scrollbar-thumb:horizontal {
           border-width: 6px 1px 1px;
           padding: 0 0 0 100px;
-          box-shadow: inset 1px 1px 0 rgba(195,128,250,.1),inset -1px 0 0 rgba(195,128,250,.07)
+          box-shadow: inset 1px 1px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.1),inset -1px 0 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.07)
         }
         
         .slight-scroll::-webkit-scrollbar-thumb:hover {
-          background-color: rgba(195,128,250,.4);
-          box-shadow: inset 1px 1px 1px rgba(195,128,250,.25)
+          background-color: rgba(${colorset[0]},${colorset[1]},${colorset[2]},.4);
+          box-shadow: inset 1px 1px 1px rgba(${colorset[0]},${colorset[1]},${colorset[2]},.25)
         }
         
         .slight-scroll::-webkit-scrollbar-thumb:active {
-          background-color: rgba(195,128,250,.05);
-          box-shadow: inset 1px 1px 3px rgba(195,128,250,.35)
+          background-color: rgba(${colorset[0]},${colorset[1]},${colorset[2]},.05);
+          box-shadow: inset 1px 1px 3px rgba(${colorset[0]},${colorset[1]},${colorset[2]},.35)
         }
         
         .slight-scroll::-webkit-scrollbar-corner {

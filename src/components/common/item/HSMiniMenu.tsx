@@ -1,7 +1,9 @@
+import { getColorTheme } from '@/src/function/common';
 import React from 'react';
 import root from 'react-shadow';
 
-export function HSMiniMenu({item}: {item: HSClickableCategory}) {
+export function HSMiniMenu({item, theme}: {item: HSClickableCategory, theme?: string}) {
+  const colorset = getColorTheme(theme ? theme : '');
   return (
     <root.div>
       <div key={item.title} className="hs-mini-menu">
@@ -22,7 +24,7 @@ export function HSMiniMenu({item}: {item: HSClickableCategory}) {
           }
           .hs-mini-menu h4{
             font-size: 18px;
-            color: #8740BA;
+            color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
             text-transform: capitalize;
             margin-bottom: 25px;
             font-weight: 500;
@@ -33,7 +35,7 @@ export function HSMiniMenu({item}: {item: HSClickableCategory}) {
             position: absolute;
             left:0;
             bottom: -10px;
-            background-color: #8740BA;
+            background-color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
             height: 2px;
             box-sizing: border-box;
             width: 80px;
@@ -48,7 +50,7 @@ export function HSMiniMenu({item}: {item: HSClickableCategory}) {
           .hs-mini-menu ul li a{
             font-size: 16px;
             text-transform: capitalize;
-            color: #A760DA;
+            color: rgb(${colorset[3]},${colorset[4]},${colorset[5]});
             text-decoration: none;
             font-weight: 300;
             display: block;
@@ -56,7 +58,7 @@ export function HSMiniMenu({item}: {item: HSClickableCategory}) {
             cursor: pointer;
           }
           .hs-mini-menu ul li a:hover{
-            color: #E3ACF9;
+            color: rgb(${colorset[6]},${colorset[7]},${colorset[8]});
             padding-left: 3px;
           }
         `}</style>

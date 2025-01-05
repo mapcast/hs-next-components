@@ -6,9 +6,9 @@ import {HSInput} from "./input/HSInput";
 import {HSButton} from "./input/HSButton";
 
 export function  HSSearchPanel({items, searchKey, updateSearchKey, searchValue, updateSearchValue,
-  searchConditions, updateSearchConditions, executeSearch, multiple, dark}: 
+  searchConditions, updateSearchConditions, executeSearch, multiple, theme}: 
   {items: HSItem[], searchKey: HSItem|null, updateSearchKey: (key: HSItem|null) => void, searchValue: string, updateSearchValue: (val: string) => void
-    searchConditions: HSKeyValue[], updateSearchConditions: Function, executeSearch: () => void, multiple?: boolean, dark?: boolean}) {
+    searchConditions: HSKeyValue[], updateSearchConditions: Function, executeSearch: () => void, multiple?: boolean, theme?: string}) {
   
   function selectKey(item: HSItem) {
     updateSearchKey(item);
@@ -43,7 +43,7 @@ export function  HSSearchPanel({items, searchKey, updateSearchKey, searchValue, 
   return (
     <div style={{display: 'flex'}}>
       <div style={{padding: '8px 4px'}}>
-        <HSSelectBox items={items} selected={searchKey} setSelected={selectKey}/>
+        <HSSelectBox theme={theme} items={items} selected={searchKey} setSelected={selectKey}/>
       </div>
       
       <div style={{padding: '0 4px'}}>
@@ -51,11 +51,14 @@ export function  HSSearchPanel({items, searchKey, updateSearchKey, searchValue, 
         <>
           {searchKey.category === 'select' ? 
           <HSSelectBox 
+          theme={theme}
           items={searchKey.selectItems ? searchKey.selectItems : []} 
           selected={searchKey} 
           setSelected={selectKey}/>
           : 
-          <HSInput placeholder="value" 
+          <HSInput
+          theme={theme}
+          placeholder="value" 
           type="text" 
           value={searchValue} 
           setValue={updateSearchValue} 
@@ -63,22 +66,22 @@ export function  HSSearchPanel({items, searchKey, updateSearchKey, searchValue, 
         </> 
         : 
         searchKey != null ? 
-        <HSInput type="text" value={""} setValue={() => {}} disabled/>
+        <HSInput theme={theme} type="text" value={""} setValue={() => {}} disabled/>
         :
         <>
-          <HSInput type="text" value={""} setValue={() => {}} disabled/>
+          <HSInput theme={theme} type="text" value={""} setValue={() => {}} disabled/>
         </>}
       </div>
       <div style={{padding: '7px 4px'}}>
-        <HSButton text={'Search'} onClick={() => executeSearch()}/>
+        <HSButton theme={theme} text={'Search'} onClick={() => executeSearch()}/>
       </div>
       <div style={{padding: '7px 4px'}}>
-        <HSButton text={`Add(${searchConditions.length})`} onClick={() => addSearchConditions()}/>
+        <HSButton theme={theme} text={`Add(${searchConditions.length})`} onClick={() => addSearchConditions()}/>
       </div>
       <div style={{padding: '7px 4px'}}>
-        <HSButton text="Refresh" onClick={() => resetSearchConditions()}/>
+        <HSButton theme={theme} text="Refresh" onClick={() => resetSearchConditions()}/>
       </div>
-      <style jsx>{`
+      <style>{`
         button {
           border: none;
           background: transparent;

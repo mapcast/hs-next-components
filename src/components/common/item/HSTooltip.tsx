@@ -1,5 +1,7 @@
+import { getColorTheme } from '@/src/function/common';
 import React from 'react';
-export function HSTooltip({text, active, width, left, top}: {text: string, active: boolean, width: number, left: number, top: number}) {
+export function HSTooltip({text, active, width, left, top, theme}: {text: string, active: boolean, width: number, left: number, top: number, theme?: string}) {
+  const colorset = getColorTheme(theme ? theme : '');
   return (
     <div style={
       {
@@ -8,7 +10,7 @@ export function HSTooltip({text, active, width, left, top}: {text: string, activ
         borderRadius: 3, 
         position: 'absolute', 
         transition: 'all 0.3s ease', 
-        background: '#C780FA', 
+        background: `rgb(${colorset[0]},${colorset[1]},${colorset[2]})`, 
         color: '#FFF', 
         overflow: 'auto',
         left, top, width,

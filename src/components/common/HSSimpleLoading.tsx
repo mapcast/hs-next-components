@@ -1,23 +1,28 @@
+'use client';
+import { getColorTheme } from '@/src/function/common';
 import React from 'react';
 
-export function HSSimpleLoading() {
+export function HSSimpleLoading({theme}: {theme?: string}) {
+  const colorset = getColorTheme(theme ? theme : '');
+  
   return (
     <div style={{width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-      <span className="spinner"/>
+      <div className="spinner">
+        <div className="spinner-inner"/>
+      </div>
       <style>{`
         .spinner {
           width: 100px;
           height: 100px;
-          border-right: 3px solid #E3AEF9;
-          border-bottom: 3px solid #E3AEF9;
+          border-right: 3px solid rgb(${colorset[6]},${colorset[7]},${colorset[8]});
+          border-bottom: 3px solid rgb(${colorset[6]},${colorset[7]},${colorset[8]});
           border-radius: 50%;
           display: inline-block;
           position: relative;
           box-sizing: border-box;
           animation: rotation 1.5s linear infinite;
         }
-        .spinner::after {
-          content: '';  
+        .spinner-inner {
           box-sizing: border-box;
           position: absolute;
           left: 50%;
@@ -27,7 +32,7 @@ export function HSSimpleLoading() {
           height: 62px;
           border-radius: 50%;
           border-top: 3px solid;
-          border-color: #8740BA transparent;
+          border-color: rgb(${colorset[9]},${colorset[10]},${colorset[11]}) transparent;
         }
         
         @keyframes rotation {

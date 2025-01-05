@@ -18,7 +18,7 @@ export const HSModal: React.FC<ModalProp> = ({title, children, active, setActive
         {title ? <h5 style={{padding: '10px 0', textAlign: 'center', color: '#000'}}>{title}</h5> : <></>}
         {children}
       </div>
-      <style jsx>{`
+      <style>{`
         .modal {
           position: fixed; 
           width: 100vw;

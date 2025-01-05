@@ -1,6 +1,6 @@
 {
-  "name": "chs-components",
-  "version": "1.0.0",
+  "name": "mapcast-components",
+  "version": "1.1.0",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

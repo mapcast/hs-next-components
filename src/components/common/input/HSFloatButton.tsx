@@ -1,8 +1,10 @@
+import { getColorTheme } from '@/src/function/common';
 import React from 'react';
 import root from 'react-shadow';
 
-export function HSFloatButton({content, onClick}: 
-  {content: JSX.Element, onClick: () => void}) {
+export function HSFloatButton({content, onClick, theme}: 
+  {content: JSX.Element, theme?: string, onClick: () => void}) {
+  const colorset = getColorTheme(theme ? theme : '');
   return (
     <root.div>
       <button className="hs-float-button" onClick={onClick}>
@@ -24,7 +26,7 @@ export function HSFloatButton({content, onClick}:
             justify-content: center;
             align-items: center;
             padding: 0;
-            box-shadow: rgba(195,128,250, 0.2) 0px 3px 5px -1px, rgba(195,128,250, 0.14) 0px 6px 10px 0px, rgba(195,128,250, 0.12) 0px 1px 18px 0px;
+            box-shadow: rgba(${colorset[0]},${colorset[1]},${colorset[2]}, 0.2) 0px 3px 5px -1px, rgba(${colorset[0]},${colorset[1]},${colorset[2]}, 0.14) 0px 6px 10px 0px, rgba(${colorset[0]},${colorset[1]},${colorset[2]}, 0.12) 0px 1px 18px 0px;
           }
           hs-float-button:hover {
             border: 1px groove rgba(0,0,0,0.2);
@@ -44,7 +46,7 @@ export function HSFloatButton({content, onClick}:
             height: 60px;
             transition: all 0.5s ease;
             background: rgba(255,255,255,0.1);
-            box-shadow: 0 0 25px 0 rgba(195,128,250,0.7);
+            box-shadow: 0 0 25px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.7);
           }
         `}</style>
       </button>
