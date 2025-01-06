@@ -2,14 +2,14 @@ import { getColorTheme } from '@/src/function/common';
 import React from 'react';
 import root from 'react-shadow';
 
-export function HSFloatButton({content, onClick, theme}: 
-  {content: JSX.Element, theme?: string, onClick: () => void}) {
+export function HSFloatButton({text, content, onClick, theme}: 
+  {text: string, content?: JSX.Element, theme?: string, onClick: () => void}) {
   const colorset = getColorTheme(theme ? theme : '');
   return (
     <root.div>
       <button className="hs-float-button" onClick={onClick}>
         <div className="hs-float-button-shadow">
-          {content}
+          {content ? content : text}
         </div>
         <style>{`
           .hs-float-button {

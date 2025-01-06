@@ -58,7 +58,7 @@ export function  HSSearchPanel({items, searchKey, updateSearchKey, searchValue, 
           : 
           <HSInput
           theme={theme}
-          placeholder="value" 
+          name="value" 
           type="text" 
           value={searchValue} 
           setValue={updateSearchValue} 

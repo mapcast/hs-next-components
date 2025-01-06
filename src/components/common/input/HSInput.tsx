@@ -4,9 +4,9 @@ import React from 'react';
 import { useRef, useState } from 'react';
 import root from 'react-shadow';
 
-export function HSInput({type, value, setValue, theme, disabled, placeholder, pushEnter}: 
-  {type: 'text'|'number', value: string, setValue: (val: string) => void,
-    theme?: string, disabled?: boolean, placeholder?: string, pushEnter?: () => void}) {
+export function HSInput({type, value, setValue, theme, name, pushEnter}: 
+  {type: 'text'|'number', value: string, setValue?: (val: string) => void,
+    theme?: string, disabled?: boolean, name?: string, pushEnter?: () => void}) {
   const [focused, setFocused] = useState(false);
   const ref = useRef<HTMLInputElement|null>(null);
   const colorset = getColorTheme(theme ? theme : '');
@@ -32,16 +32,16 @@ export function HSInput({type, value, setValue, theme, disabled, placeholder, pu
   return (
     <root.div>
       <div style={{position: 'relative', borderBottom: `1px solid rgb(${colorset[0]},${colorset[1]},${colorset[2]}`, paddingTop: 10, paddingBottom: 2}}>
-        {placeholder ? <span onClick={clickPlaceholder} className={`big-input-placeholder ${focused || value.length > 0 ? 'focused' : ''}`}>
-          {placeholder}
+        {name ? <span onClick={clickPlaceholder} className={`big-input-placeholder ${focused || value.length > 0 ? 'focused' : ''}`}>
+          {name}
         </span> : <></>}
         <input ref={ref} type={type} value={value} 
         style={{border: 'none', outline: 'none', background: 'transparent', color: '#8740BA'}} 
         onKeyDown={checkPushEnter} 
         onFocus={handleFocus}
         onBlur={handleBlur}
-        onChange={(e: any) => {setValue(e.target.value)}}
-        disabled={disabled ? disabled : false}/>
+        onChange={(e: any) => setValue ? setValue(e.target.value) : {}}
+        disabled={setValue ? false : true}/>
       </div>
       <style>{`
         .big-input-placeholder {

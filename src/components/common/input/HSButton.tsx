@@ -2,7 +2,7 @@ import { getColorTheme } from '@/src/function/common';
 import React from 'react';
 import root from 'react-shadow';
 export function HSButton({text, onClick, theme}: 
-  {text: string|JSX.Element, theme?: string, onClick: () => void}) {
+  {text: string, theme?: string, onClick: () => void}) {
   const colorset = getColorTheme(theme ? theme : '');
   return (
     <root.div>
