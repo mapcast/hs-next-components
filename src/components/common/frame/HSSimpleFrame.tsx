@@ -1,6 +1,7 @@
 import React from 'react';
 import {HSSimpleTitle} from "../item/HSSimpleTitle";
 import { getColorTheme } from '@/src/function/common';
+import { HSLink } from '../input/HSLink';
 
 type FrameProp = {
   children: JSX.Element,
@@ -8,18 +9,19 @@ type FrameProp = {
   height: number | string,
   padding?: number,
   title?: string,
-  theme?: string
+  theme?: string,
+  clickLink?: () => void
 }
-export const HSSimpleFrame: React.FC<FrameProp> = ({children, width, height, padding, title, theme}) => {
+export const HSSimpleFrame: React.FC<FrameProp> = ({children, width, height, padding, title, theme, clickLink}) => {
   const colorset = getColorTheme(theme ? theme : '');
   return (
     <div style={{width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
       <div className="slight-scroll" style={{boxShadow: `0 0 15px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.3)`, width, height, padding: padding ? padding : 0, overflowY: 'auto'}}>
-        {title ?  <HSSimpleTitle theme={theme} level={4} text={title}/> : <></>}
+        {title ?  <div style={{display: 'flex', gap: 10}}><HSSimpleTitle theme={theme} level={4} text={title}/>{clickLink ? <div style={{paddingBottom: 10, display: 'flex', alignItems: 'center'}}><HSLink text="detail" onClick={clickLink} cooldown={0}/></div> : <></>}</div> : <></>}
         {children}
       </div>
       <style>{`
-         .slight-scroll::-webkit-scrollbar-button {
+        .slight-scroll::-webkit-scrollbar-button {
           height: 0;
           width: 0;
         }

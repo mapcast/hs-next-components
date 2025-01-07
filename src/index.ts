@@ -27,6 +27,8 @@ export {HSMiniMenu} from './components/common/item/HSMiniMenu';
 export {HSTooltip} from './components/common/item/HSTooltip';
 export {HSSimpleTitle} from './components/common/item/HSSimpleTitle';
 export {HSSimpleToast} from './components/common/item/HSSimpleToast';
+export {HSParagraph} from './components/common/item/HSParagraph';
+
 
 export {HSDrawer} from './components/common/menu/drawer/HSDrawer';
 
