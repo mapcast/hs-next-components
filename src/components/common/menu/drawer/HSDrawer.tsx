@@ -7,13 +7,13 @@ import DoubleArrow from "../../item/DoubleArrow";
 import { getColorTheme } from '@/src/function/common';
 
 export function HSDrawer({items, theme}: {items: HSShelfItem[], theme?: string}) {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState<boolean|null>(null);
   const [opened, setOpened] = useState<HSShelfItem|null>(null);
   const colorset = getColorTheme(theme ? theme : '');
 
   return (
     <root.div>
-      <nav className={`hs-nav ${active ? 'active' : 'deactive'}`}>
+      <nav className={`hs-nav ${active == null ? 'initial' : active ? 'active' : 'deactive'}`}>
         <button className="opener" onClick={() => setActive(!active)}><div className="opener-border">{active ? <DoubleArrow theme={theme} rotate={270}/> : <DoubleArrow theme={theme} rotate={90}/>}</div></button>
         {items.map((shelf: HSShelfItem, index: number) => <HSShelf theme={theme} key={index} opened={opened != null && opened.text === shelf.text} setOpened={setOpened} shelf={shelf}/>)}
         <style>{`
@@ -56,6 +56,12 @@ export function HSDrawer({items, theme}: {items: HSShelfItem[], theme?: string})
             animation-duration: 0.5s;
             animation-fill-mode: forwards;
           }
+          .initial {
+            animation-name: initial-nav;
+            animation-duration: 0s;
+            animation-fill-mode: forwards;
+          }
+          
           
           @keyframes open-nav{
             0%{
@@ -69,6 +75,11 @@ export function HSDrawer({items, theme}: {items: HSShelfItem[], theme?: string})
             0%{
               transform: translateX(0px);
             }
+            100%{
+              transform: translateX(-351px);
+            }
+          }
+          @keyframes initial-nav{
             100%{
               transform: translateX(-351px);
             }

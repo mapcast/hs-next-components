@@ -8,7 +8,7 @@ export function HSPicketProgressBar({text, value, picket, bigPicket, theme}:
   return (
     <div style={{display: 'grid', gridTemplateRows: `${bigPicket ? 32 : 25}px 1fr`, height: '100%'}}>
       <div style={{display: 'flex', position: 'relative', alignItems: 'flex-end'}}>
-        <div style={{position: 'absolute', left: value < 50 ? `${value}%` : 'auto', right: value >= 50 ? `${100 - value}%` : 'auto'}}>
+        <div style={{position: 'absolute', left: value < 50 ? `${value}%` : 'auto', transition: '0.2s all ease', right: value >= 50 ? `${100 - value}%` : 'auto'}}>
           <div style={{borderRadius: value < 50 ? '2px 2px 2px 0' : '2px 2px 0 2px', textAlign: 'center', display: 'flex', width: 'fit-content',fontSize: 10, background: `rgb(${colorset[0]},${colorset[1]},${colorset[2]})`, color: `rgb(${colorset[9]},${colorset[10]},${colorset[11]})`, padding: bigPicket ? '4px 12px' : '2px 8px'}}><span>{picket}</span></div>
           {value < 50 ?
           <div style={{height: 2, width: 2, borderTop: `2px solid rgb(${colorset[0]},${colorset[1]},${colorset[2]})`,borderBottom: '2px solid transparent',borderLeft: `2px solid rgb(${colorset[0]},${colorset[1]},${colorset[2]})`,borderRight: '2px solid transparent'}}/>
