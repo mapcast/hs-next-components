@@ -4,7 +4,7 @@ import React from "react"
 import SimpleArrow from "./item/SimpleArrow"
 import { getColorTheme } from "@/src/function/common";
 
-export function HSStepper({items, step, setStep, theme}: {items: HSItem[], step: string, setStep: (step: string) => void, theme?: string}) {
+export function HSStepper({items, selected, clickTab, theme}: {items: HSItem[], selected: string, theme?: string, clickTab: (tab: string) => void}) {
   const colorset = getColorTheme(theme ? theme : '');
   
   return (
@@ -15,8 +15,8 @@ export function HSStepper({items, step, setStep, theme}: {items: HSItem[], step:
         <div style={{height: '100%', width: 45, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <SimpleArrow theme={theme}/>
         </div> : <></>} 
-        <div className="hs-stepper-step" key={index} onClick={() => setStep(item.raw)}>
-          <span style={{fontWeight: item.raw === step ? 800 : 400, fontSize: 14}}>{`Step ${index}`}</span><br/>
+        <div className="hs-stepper-step" key={index} onClick={() => clickTab(item.raw)}>
+          <span style={{fontWeight: item.raw === selected ? 800 : 400, fontSize: 14}}>{`Step ${index}`}</span><br/>
           <span style={{fontSize: 12}}>{item.display}</span>
         </div>
       </React.Fragment>

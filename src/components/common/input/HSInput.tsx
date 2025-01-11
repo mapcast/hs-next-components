@@ -4,9 +4,9 @@ import React from 'react';
 import { useRef, useState } from 'react';
 import root from 'react-shadow';
 
-export function HSInput({type, value, setValue, theme, name, pushEnter}: 
+export function HSInput({type, value, setValue, width, theme, name, pushEnter}: 
   {type: 'text'|'number', value: string, setValue?: (val: string) => void,
-    theme?: string, disabled?: boolean, name?: string, pushEnter?: () => void}) {
+    width?: number, theme?: string, disabled?: boolean, name?: string, pushEnter?: () => void}) {
   const [focused, setFocused] = useState(false);
   const ref = useRef<HTMLInputElement|null>(null);
   const colorset = getColorTheme(theme ? theme : '');
@@ -31,8 +31,8 @@ export function HSInput({type, value, setValue, theme, name, pushEnter}:
 
   return (
     <root.div>
-      <div style={{position: 'relative', borderBottom: `1px solid rgb(${colorset[0]},${colorset[1]},${colorset[2]}`, paddingTop: 10, paddingBottom: 2}}>
-        {name ? <span onClick={clickPlaceholder} className={`big-input-placeholder ${focused || value.length > 0 ? 'focused' : ''}`}>
+      <div style={{position: 'relative', width: width ? width : '100%', borderBottom: `1px solid rgb(${colorset[0]},${colorset[1]},${colorset[2]}`, paddingTop: 10, paddingBottom: 2}}>
+        {name ? <span onClick={clickPlaceholder} className={`hs-input-placeholder ${focused || value.length > 0 ? 'focused' : ''}`}>
           {name}
         </span> : <></>}
         <input ref={ref} type={type} value={value} 
@@ -44,15 +44,15 @@ export function HSInput({type, value, setValue, theme, name, pushEnter}:
         disabled={setValue ? false : true}/>
       </div>
       <style>{`
-        .big-input-placeholder {
+        .hs-input-placeholder {
           position: absolute;
           color: rgb(${colorset[0]},${colorset[1]},${colorset[2]});
-          font-size: 14px;
+          font-size: 12px;
           top: 10px;
           left: 2px;
           transition: all 0.3s ease;
         }
-        .big-input-placeholder.focused {
+        .hs-input-placeholder.focused {
           font-size: 10px;
           top: 0;
         }

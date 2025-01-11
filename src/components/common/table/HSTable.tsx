@@ -5,9 +5,9 @@ import { HSSimpleLoading } from '../HSSimpleLoading';
 import { getColorTheme } from '@/src/function/common';
 export {HSSimpleLoading} from '../HSSimpleLoading';
 
-export function HSTable({headers, list, width, theme, loading, handleSort, handleClickData}: 
-  {headers:HSTableHeader[], list: any[], 
-    width?: Array<string|number>, theme?: string, loading?: boolean,
+export function HSTable({headers, list, width, rowWidths, theme, loading, handleSort, handleClickData}: 
+  {headers:HSTableHeader[], list: any[], width?: number | string,
+    rowWidths?: Array<string|number>, theme?: string, loading?: boolean,
     handleSort?: (sort: HSSort) => void, handleClickData?: (header: HSTableHeader, data: string) => void}) {
   const [sorted, setSorted] = useState<HSTableHeader|null>(null);
   const [direction, setDirection] = useState(true);
@@ -39,7 +39,7 @@ export function HSTable({headers, list, width, theme, loading, handleSort, handl
   }
 
   return (
-    <table>
+    <table style={{width: width ? width : '100%'}}>
       <thead>
         <tr style={{
           background: 'transparent',
@@ -49,7 +49,7 @@ export function HSTable({headers, list, width, theme, loading, handleSort, handl
           <th className={handleSort ? 'clickable' : ''}
           key={header.id ? header.id : index} 
           style={{
-            width: width ? width[index] : 'auto',
+            width: rowWidths ? rowWidths[index] : 'auto',
             cursor: handleSort ? 'pointer' : 'default'
           }}
           onClick={() => handleSort ? sort(header) : {}}>
@@ -101,7 +101,6 @@ export function HSTable({headers, list, width, theme, loading, handleSort, handl
           border-style: none;
           border-collapse: collapse;
           padding: 0px;
-          width: 100%;
           table-layout: fixed;
           text-overflow:ellipsis; 
           overflow:hidden; 
