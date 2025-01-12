@@ -56,7 +56,7 @@ export default function HSShelf({shelf, opened, setOpened, theme}: {shelf: HSShe
           overflow: hidden;
         }
         .opened > .sub-drawer {
-          max-height: 100px;
+          max-height: 600px;
         }
         ul {
           margin: 0;

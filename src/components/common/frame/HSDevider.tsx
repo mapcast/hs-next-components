@@ -7,10 +7,10 @@ export function HSDevider({size, horizontal, theme}: {size: number, horizontal?:
     <div style={{width: horizontal ? size : '100%', height: horizontal ? '100%' : size}} className={`${horizontal ? 'hs-devider-horizontal' : 'hs-devider-vertical'}`}>
       <style>{`
         .hs-devider-vertical {
-          background-image: linear-gradient(to right, rgb(${colorset[9]},${colorset[10]},${colorset[11]}), rgb(${colorset[6]},${colorset[7]},${colorset[8]}));
+          background-image: linear-gradient(to right, rgb(${colorset[0]},${colorset[1]},${colorset[2]}), rgba(${colorset[6]},${colorset[7]},${colorset[8]}, 0.5));
         }
         .hs-devider-horizontal {
-          background-image: linear-gradient(to bottom, rgb(${colorset[9]},${colorset[10]},${colorset[11]}), rgb(${colorset[6]},${colorset[7]},${colorset[8]}));
+          background-image: linear-gradient(to bottom, rgb(${colorset[0]},${colorset[1]},${colorset[2]}), rgba(${colorset[6]},${colorset[7]},${colorset[8]}, 0.5));
         }
       `}</style>
     </div>

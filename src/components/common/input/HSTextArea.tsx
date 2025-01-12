@@ -2,8 +2,8 @@ import { getColorTheme } from '@/src/function/common';
 import React from 'react';
 import { useRef, useState } from "react";
 
-export function HSTextArea({fieldName, fieldValue, setFieldValue, theme, width, height}: 
-  {fieldName: string, fieldValue: string, setFieldValue?: Function, theme?: string, width?: number, height?:number}) {
+export function HSTextArea({name, value, setValue, theme, width, height}: 
+  {name: string, value: string, setValue?: Function, theme?: string, width?: number, height?:number}) {
   const [focused, setFocused] = useState(false);
   const ref = useRef<HTMLTextAreaElement|null>(null);
   const colorset = getColorTheme(theme ? theme : '');
@@ -13,7 +13,7 @@ export function HSTextArea({fieldName, fieldValue, setFieldValue, theme, width, 
   }
 
   function handleBlur() {
-    if(fieldValue === '') setFocused(false);
+    if(value === '') setFocused(false);
   }
 
   function clickPlaceholder() {
@@ -21,14 +21,14 @@ export function HSTextArea({fieldName, fieldValue, setFieldValue, theme, width, 
   }
 
   function handleKeyDown(event: React.KeyboardEvent<HTMLTextAreaElement>) {
-    if(setFieldValue) {
+    if(setValue) {
       if(event.key === 'Tab') {
         event.preventDefault();
         const textarea = event.target as HTMLTextAreaElement;
         const cursorPos = textarea.selectionStart;
-        const textBefore = fieldValue.substring(0, cursorPos);
-        const textAfter = fieldValue.substring(cursorPos, fieldValue.length);
-        setFieldValue(textBefore + "\t" + textAfter);
+        const textBefore = value.substring(0, cursorPos);
+        const textAfter = value.substring(cursorPos, value.length);
+        setValue(textBefore + "\t" + textAfter);
         setTimeout(() => {
           textarea.selectionStart = textarea.selectionEnd = cursorPos + 1;
         }, 0);
@@ -36,7 +36,7 @@ export function HSTextArea({fieldName, fieldValue, setFieldValue, theme, width, 
         event.preventDefault();
         const textarea = event.target as HTMLTextAreaElement;
         const cursorPos = textarea.selectionStart;
-        const textBefore = fieldValue.substring(0, cursorPos);
+        const textBefore = value.substring(0, cursorPos);
         const splitted = textBefore.split("\n");
         const last = splitted[splitted.length - 1];
         const matcher = last.match(/\t/g );
@@ -47,8 +47,8 @@ export function HSTextArea({fieldName, fieldValue, setFieldValue, theme, width, 
         }
         for(let i = 0; i < count; i ++) tabs = tabs.concat("\t");
   
-        const textAfter = fieldValue.substring(cursorPos, fieldValue.length);
-        setFieldValue(textBefore + `\n${tabs}` + textAfter);
+        const textAfter = value.substring(cursorPos, value.length);
+        setValue(textBefore + `\n${tabs}` + textAfter);
         setTimeout(() => {
           textarea.selectionStart = textarea.selectionEnd = cursorPos + 1 + count;
           textarea.scrollTop = 14 * splitted.length + 42;
@@ -61,9 +61,9 @@ export function HSTextArea({fieldName, fieldValue, setFieldValue, theme, width, 
   return (
     <div className="hs-textarea-wrap" style={{width: width ? width : '100%', height: height ? height: '100%', position: 'relative'}}>
       <div className="hs-textarea-input-wrap">
-        <div onClick={clickPlaceholder} className="hs-textarea-title">{fieldName}</div>
-        <textarea className="hs-textarea slight-scroll" ref={ref} spellCheck="false" value={fieldValue} 
-        onChange={(e) => setFieldValue ? setFieldValue(e.target.value) : {}} onKeyDown={handleKeyDown} onFocus={handleFocus} onBlur={handleBlur} disabled={!setFieldValue ? true : false}/>
+        <div onClick={clickPlaceholder} className="hs-textarea-title">{name}</div>
+        <textarea className="hs-textarea slight-scroll" ref={ref} spellCheck="false" value={value} 
+        onChange={(e) => setValue ? setValue(e.target.value) : {}} onKeyDown={handleKeyDown} onFocus={handleFocus} onBlur={handleBlur} disabled={!setValue ? true : false}/>
       </div>
       <style>{`
         .hs-textarea-wrap {

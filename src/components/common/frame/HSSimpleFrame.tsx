@@ -17,7 +17,7 @@ export const HSSimpleFrame: React.FC<FrameProp> = ({children, width, height, pad
   return (
     <div style={{width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
       <div className="slight-scroll" style={{boxShadow: `0 0 15px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.3)`, width, height, padding: padding ? padding : 0, overflowY: 'auto'}}>
-        {title ?  <div style={{display: 'flex', gap: 10}}><HSSimpleTitle theme={theme} level={4} text={title}/>{clickLink ? <div style={{paddingBottom: 10, display: 'flex', alignItems: 'center'}}><HSLink text="detail" onClick={clickLink} cooldown={0}/></div> : <></>}</div> : <></>}
+        {title ?  <div style={{display: 'flex', gap: 10}}><HSSimpleTitle theme={theme} level={4} text={title}/>{clickLink ? <div style={{paddingBottom: 10, display: 'flex', alignItems: 'center'}}><HSLink theme={theme} text="detail" onClick={clickLink} cooldown={0}/></div> : <></>}</div> : <></>}
         {children}
       </div>
       <style>{`
