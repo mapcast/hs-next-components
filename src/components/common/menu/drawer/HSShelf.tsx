@@ -40,10 +40,10 @@ export default function HSShelf({shelf, opened, setOpened, theme}: {shelf: HSShe
           transition: all 0.3s ease;
         }
         .opened > .main-shelf {
-          background: rgb(${colorset[0]},${colorset[1]},${colorset[2]});
+          background: rgb(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue});
         }
         .main-shelf:hover {
-          background: rgb(${colorset[0]},${colorset[1]},${colorset[2]});
+          background: rgb(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue});
         }
         .sub-drawer {
           background: #FFF;
@@ -70,7 +70,7 @@ export default function HSShelf({shelf, opened, setOpened, theme}: {shelf: HSShe
         }
         .sub-shelf:hover {
           font-weight: 800;
-          background: rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.3);
+          background: rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.3);
         }
       `}</style>
     </div>

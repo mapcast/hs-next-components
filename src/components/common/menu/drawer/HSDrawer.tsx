@@ -41,10 +41,10 @@ export function HSDrawer({items, theme}: {items: HSShelfItem[], theme?: string})
             height: 100vh;
             width: 330px;
             background: #FFF;
-            color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
+            color: rgb(${colorset.typo.red},${colorset.typo.green},${colorset.typo.blue});
             z-index: 100;
             padding: 10px;
-            border-right: 1px solid rgb(${colorset[6]},${colorset[7]},${colorset[8]});
+            border-right: 1px solid rgb(${colorset.light.red},${colorset.light.green},${colorset.light.blue});
           }
           .active {
             animation-name: open-nav;
@@ -97,9 +97,9 @@ export function HSDrawer({items, theme}: {items: HSShelfItem[], theme?: string})
             border-radius: 0 3px 3px 0;
           }
           .opener-border {
-            border-top: 1px groove rgb(${colorset[6]},${colorset[7]},${colorset[8]});
-            border-bottom: 1px groove rgb(${colorset[6]},${colorset[7]},${colorset[8]});
-            border-right: 1px groove rgb(${colorset[6]},${colorset[7]},${colorset[8]});
+            border-top: 1px groove rgb(${colorset.light.red},${colorset.light.green},${colorset.light.blue});
+            border-bottom: 1px groove rgb(${colorset.light.red},${colorset.light.green},${colorset.light.blue});
+            border-right: 1px groove rgb(${colorset.light.red},${colorset.light.green},${colorset.light.blue});
             border-radius: 0 3px 3px 0;
             padding: 3px 0;
             display: flex;

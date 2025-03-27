@@ -1,21 +1,23 @@
-import { getColorTheme } from '@/src/function/common';
 import React from 'react';
+import {HSSimpleTitle} from "../item/HSSimpleTitle";
+import { getColorTheme } from '@/src/function/common';
+import { HSLink } from '../input/HSLink';
 
 type FrameProp = {
-  children: JSX.Element | string,
+  children: JSX.Element,
   width: number | string,
   height: number | string,
-  borderRadius?: number | string,
+  padding?: number,
+  title?: string,
   theme?: string,
+  clickLink?: () => void
 }
-export const HSSimpleFrame: React.FC<FrameProp> = ({children, width, height, borderRadius, theme}) => {
+export const HSFrameWithTitle: React.FC<FrameProp> = ({children, width, height, padding, title, theme, clickLink}) => {
   const colorset = getColorTheme(theme ? theme : '');
   return (
     <div style={{width: '100%', height: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-      <div className="slight-scroll" 
-      style={{boxShadow: `0 0 15px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.3)`, 
-      width, height, overflowY: 'auto', borderRadius: borderRadius ? borderRadius : 0,
-      background: colorset.background ? `rgb(${colorset.background.red},${colorset.background.green},${colorset.background.blue})` : 'transparent'}}>
+      <div className="slight-scroll" style={{boxShadow: `0 0 15px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.3)`, width, height, padding: padding ? padding : 0, overflowY: 'auto'}}>
+        {title ?  <div style={{display: 'flex', gap: 10}}><HSSimpleTitle color={'#222'} level={5} text={title}/>{clickLink ? <div style={{paddingBottom: 10, display: 'flex', alignItems: 'center'}}><HSLink theme={theme} text="detail" onClick={clickLink} cooldown={0}/></div> : <></>}</div> : <></>}
         {children}
       </div>
       <style>{`

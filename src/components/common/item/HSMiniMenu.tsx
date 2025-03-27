@@ -24,7 +24,7 @@ export function HSMiniMenu({item, theme}: {item: HSClickableCategory, theme?: st
           }
           .hs-mini-menu h4{
             font-size: 18px;
-            color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
+            color: rgb(${colorset.typo.red},${colorset.typo.green},${colorset.typo.blue});
             text-transform: capitalize;
             margin-bottom: 25px;
             font-weight: 500;
@@ -35,7 +35,7 @@ export function HSMiniMenu({item, theme}: {item: HSClickableCategory, theme?: st
             position: absolute;
             left:0;
             bottom: -10px;
-            background-color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
+            background-color: rgb(${colorset.typo.red},${colorset.typo.green},${colorset.typo.blue});
             height: 2px;
             box-sizing: border-box;
             width: 80px;
@@ -50,7 +50,7 @@ export function HSMiniMenu({item, theme}: {item: HSClickableCategory, theme?: st
           .hs-mini-menu ul li a{
             font-size: 16px;
             text-transform: capitalize;
-            color: rgb(${colorset[3]},${colorset[4]},${colorset[5]});
+            color: rgb(${colorset.deep.red},${colorset.deep.green},${colorset.deep.blue});
             text-decoration: none;
             font-weight: 300;
             display: block;
@@ -58,7 +58,7 @@ export function HSMiniMenu({item, theme}: {item: HSClickableCategory, theme?: st
             cursor: pointer;
           }
           .hs-mini-menu ul li a:hover{
-            color: rgb(${colorset[6]},${colorset[7]},${colorset[8]});
+            color: rgb(${colorset.light.red},${colorset.light.green},${colorset.light.blue});
             padding-left: 3px;
           }
         `}</style>

@@ -5,10 +5,10 @@ import { HSSimpleLoading } from '../HSSimpleLoading';
 import { getColorTheme } from '@/src/function/common';
 export {HSSimpleLoading} from '../HSSimpleLoading';
 
-export function HSTable({headers, list, width, rowWidths, theme, loading, handleSort, handleClickData}: 
+export function HSTable({headers, list, width, rowWidths, theme, loading, handleSort}: 
   {headers:HSTableHeader[], list: any[], width?: number | string,
     rowWidths?: Array<string|number>, theme?: string, loading?: boolean,
-    handleSort?: (sort: HSSort) => void, handleClickData?: (header: HSTableHeader, data: string) => void}) {
+    handleSort?: (sort: HSSort) => void}) {
   const [sorted, setSorted] = useState<HSTableHeader|null>(null);
   const [direction, setDirection] = useState(true);
   const colorset = getColorTheme(theme ? theme : '');
@@ -43,7 +43,7 @@ export function HSTable({headers, list, width, rowWidths, theme, loading, handle
       <thead>
         <tr style={{
           background: 'transparent',
-          borderBottom: `1px groove rgb(${colorset[6]},${colorset[7]},${colorset[8]})`
+          borderBottom: `1px groove rgb(${colorset.light.red},${colorset.light.green},${colorset.light.blue})`
         }}>
           {headers.map((header: HSTableHeader, index: number) => 
           <th className={handleSort ? 'clickable' : ''}
@@ -52,7 +52,7 @@ export function HSTable({headers, list, width, rowWidths, theme, loading, handle
             width: rowWidths ? rowWidths[index] : 'auto',
             cursor: handleSort ? 'pointer' : 'default'
           }}
-          onClick={() => handleSort ? sort(header) : {}}>
+          onClick={() => handleSort && header.type !== 'button' ? sort(header) : {}}>
             <div style={{display: 'flex'}}>
               <div style={{padding: '2px 0'}}>
                 <span style={{cursor: handleSort ? 'pointer' : 'default'}}>{header.display ? header.display : header.raw}</span>
@@ -68,15 +68,15 @@ export function HSTable({headers, list, width, rowWidths, theme, loading, handle
       <tbody>
         {list.map((data: any, listIndex: number) => 
         <tr key={data.id ? data.id : listIndex} style={{
-          background: listIndex % 2 == 0 ? `rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.05)` : `rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.15)`,
+          background: listIndex % 2 == 0 ? `rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.05)` : `rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.15)`,
         }}>
           {headers.map((header: HSTableHeader, tdIndex: number) => 
-          <td className={handleClickData && header.clickable ? 'clickable' : ''} key={tdIndex} 
-          style={{cursor: handleClickData && header.clickable ? 'pointer' : 'default'}}
-          onClick={() => handleClickData && header.clickable ? handleClickData(header, header.join ? data[header.join][header.raw] : data[header.raw]) : {}}>
+          <td className={header.onClick ? 'clickable' : ''} key={tdIndex} 
+          style={{cursor: header.onClick ? 'pointer' : 'default'}}
+          onClick={() => header.onClick ? header.onClick(data) : {}}>
             {header.join ? 
             <>
-              {data[header.join][header.raw] == null ? '-' :
+              {data[header.join][header.raw] == null ? header.type === 'button' ? header.raw : '-' :
               !header.type || header.type === 'string' ? data[header.join][header.raw] :
               header.type === 'number' ? data[header.join][header.raw].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") :
               header.type === 'boolean' ? data[header.join][header.raw] ? header.bool?.true : header.bool?.false :
@@ -84,7 +84,7 @@ export function HSTable({headers, list, width, rowWidths, theme, loading, handle
             </> 
             :
             <>
-              {data[header.raw] == null ? '-' :
+              {data[header.raw] == null ? header.type === 'button' ? header.raw : '-' :
               !header.type || header.type === 'string' ? data[header.raw] :
               header.type === 'number' ? data[header.raw].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") :
               header.type === 'boolean' ? data[header.raw] ? header.bool?.true : header.bool?.false :
@@ -105,7 +105,7 @@ export function HSTable({headers, list, width, rowWidths, theme, loading, handle
           text-overflow:ellipsis; 
           overflow:hidden; 
           white-space:nowrap;
-          box-shadow: 0 0 5px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.5);
+          box-shadow: 0 0 5px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.5);
         }
         th {
           border-spacing: 0px;
@@ -115,14 +115,14 @@ export function HSTable({headers, list, width, rowWidths, theme, loading, handle
           white-space:nowrap;
           padding: 8px 10px;
           fontWeight: 800;
-          color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
+          color: rgb(${colorset.typo.red},${colorset.typo.green},${colorset.typo.blue});
           text-align: left;
           font-size: 16px;
           transition: all 0.3s ease;
         }
         td {
           border-spacing: 0px;
-          color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
+          color: rgb(${colorset.typo.red},${colorset.typo.green},${colorset.typo.blue});
           border-style: none;
           text-overflow:ellipsis; 
           overflow:hidden; 
@@ -131,7 +131,7 @@ export function HSTable({headers, list, width, rowWidths, theme, loading, handle
           transition: all 0.3s ease;
         }
         .clickable:hover {
-          color: rgb(${colorset[0]},${colorset[1]},${colorset[2]});
+          color: rgb(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue});
         }
       `}</style>
     </table>

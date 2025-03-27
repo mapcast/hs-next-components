@@ -54,12 +54,12 @@ export function HSPagination({page, maxPage, setPage, onChange, theme}:
           border-radius: 2px;
         }
         .hs-pagination-page {
-          color: rgb(${colorset[0]},${colorset[1]},${colorset[2]});
+          color: rgb(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue});
           border-radius: 8px;
         }
         .hs-pagination-page:hover, .hs-pagination-page.active {
           background: #FFF;
-          box-shadow: 0 0 15px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},1);
+          box-shadow: 0 0 15px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},1);
         }
         span {
           cursor: default;

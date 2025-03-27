@@ -17,7 +17,7 @@ export function HSTabs({items, selected, clickTab, theme}: {items: HSItem[], sel
         <style>{`
           .hs-tab {
             cursor: pointer;
-            border: 1px groove rgb(${colorset[3]},${colorset[4]},${colorset[5]});
+            border: 1px groove rgb(${colorset.deep.red},${colorset.deep.green},${colorset.deep.blue});
             border-bottom: 0;
             text-align: left;
             width: 120px;
@@ -26,19 +26,19 @@ export function HSTabs({items, selected, clickTab, theme}: {items: HSItem[], sel
             font-size: 12px;
             padding-left: 5px;
             padding-top: 5px;
-            box-shadow: 0 0 25px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.3);
+            box-shadow: 0 0 25px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.3);
             box-sizing: border-box;
-            background: rgb(${colorset[6]},${colorset[7]},${colorset[8]});
-            color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
+            background: rgb(${colorset.light.red},${colorset.light.green},${colorset.light.blue});
+            color: rgb(${colorset.typo.red},${colorset.typo.green},${colorset.typo.blue});
             transition: all 0.2s ease;
           }
           .hs-tab.active {
-            border-bottom: 2px solid rgb(${colorset[3]},${colorset[4]},${colorset[5]});
-            box-shadow: 0 0 25px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.7);
+            border-bottom: 2px solid rgb(${colorset.deep.red},${colorset.deep.green},${colorset.deep.blue});
+            box-shadow: 0 0 25px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.7);
           }
           .hs-tab:hover {
-            border-bottom: 2px solid rgb(${colorset[3]},${colorset[4]},${colorset[5]});
-            box-shadow: 0 0 25px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.7);
+            border-bottom: 2px solid rgb(${colorset.deep.red},${colorset.deep.green},${colorset.deep.blue});
+            box-shadow: 0 0 25px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.7);
           }
           .hs-tab:first-child {
             margin-left: 0;

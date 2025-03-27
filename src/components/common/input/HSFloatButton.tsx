@@ -26,7 +26,7 @@ export function HSFloatButton({text, content, onClick, theme}:
             justify-content: center;
             align-items: center;
             padding: 0;
-            box-shadow: rgba(${colorset[0]},${colorset[1]},${colorset[2]}, 0.2) 0px 3px 5px -1px, rgba(${colorset[0]},${colorset[1]},${colorset[2]}, 0.14) 0px 6px 10px 0px, rgba(${colorset[0]},${colorset[1]},${colorset[2]}, 0.12) 0px 1px 18px 0px;
+            box-shadow: rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue}, 0.2) 0px 3px 5px -1px, rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue}, 0.14) 0px 6px 10px 0px, rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue}, 0.12) 0px 1px 18px 0px;
           }
           hs-float-button:hover {
             border: 1px groove rgba(0,0,0,0.2);
@@ -46,7 +46,7 @@ export function HSFloatButton({text, content, onClick, theme}:
             height: 60px;
             transition: all 0.5s ease;
             background: rgba(255,255,255,0.1);
-            box-shadow: 0 0 25px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.7);
+            box-shadow: 0 0 25px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.7);
           }
         `}</style>
       </button>

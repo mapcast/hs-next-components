@@ -1,11 +1,12 @@
+
 type HSTableHeader = {
   id?: string|number,
   raw: string,
-  clickable?: boolean,
   display?: string,
   bool?: HSBool,
   join?: string,
   type?: string,
+  onClick?: (data: any) => void,
 }
 
 type HSTableValues = {
@@ -34,7 +35,7 @@ type Toggleable = {
   default: boolean
 }
 
-type HSKeyValue = {
+type HSKV = {
   key: string,
   value: string,
   keyDisplay?: string,
@@ -92,4 +93,17 @@ type HSFooterItem = {
 type HSClickableCategory = {
   title: string,
   items: Clickable[]
+}
+
+type HSColors = {
+  normal: HSColor,
+  deep: HSColor,
+  light: HSColor,
+  typo: HSColor,
+  background?: HSColor,
+}
+type HSColor = {
+  red: number,
+  green: number,
+  blue: number
 }

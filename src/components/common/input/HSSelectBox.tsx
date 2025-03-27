@@ -36,13 +36,13 @@ export function HSSelectBox({items, selected, setSelected, theme, width}:
       <div style={{
         width: width ? width : 150, 
         position: 'relative',
-        color: `rgba(${colorset[9]},${colorset[10]},${colorset[11]})`,
+        color: `rgba(${colorset.typo.red},${colorset.typo.green},${colorset.typo.blue})`,
         borderRadius: 5, 
         cursor: "pointer",
         height: 26,
         fontSize: 14,
-        boxShadow: `0 0 5px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.5)`,
-        border: `1px groove rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.5)`}}>
+        boxShadow: `0 0 5px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.5)`,
+        border: `1px groove rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.5)`}}>
         <div 
         onClick={() => setOpened(!opened)}
         style={{padding: '0 5px', display: 'flex', alignItems: 'center', width: '100%', height: '100%'}}>
@@ -59,9 +59,9 @@ export function HSSelectBox({items, selected, setSelected, theme, width}:
           zIndex: 2, 
           borderRadius: 5,
           background: 'rgba(255,255,255,0.95)', 
-          border: `1px groove rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.5)`, 
+          border: `1px groove rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.5)`, 
           listStyleType: 'none'}}>
-          {items.map((item: HSItem, index: number) => <HSSelectBoxItem key={index} color={`rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.5)`} item={item} select={(item: HSItem) => {setSelected(item); setOpened(false);}}/>)}
+          {items.map((item: HSItem, index: number) => <HSSelectBoxItem key={index} color={`rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.5)`} item={item} select={(item: HSItem) => {setSelected(item); setOpened(false);}}/>)}
         </ul> : <></>}
       </div>
     </root.div>

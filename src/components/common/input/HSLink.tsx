@@ -8,7 +8,7 @@ export function HSLink({text, fontSize, stopped, onClick, cooldown, theme}:
   const colorset = getColorTheme(theme ? theme : '');
   
   const style = {
-    color: cooled || stopped ? '#BBB' : hovered ? `rgb(${colorset[6]},${colorset[7]},${colorset[8]})` : `rgb(${colorset[0]},${colorset[1]},${colorset[2]})`,
+    color: cooled || stopped ? '#BBB' : hovered ? `rgb(${colorset.light.red},${colorset.light.green},${colorset.light.blue})` : `rgb(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue})`,
     fontSize: fontSize ? fontSize : 16,
     cursor: cooled || stopped ? 'default' : 'pointer',
     transition: 'all 0.5s',

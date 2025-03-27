@@ -14,8 +14,8 @@ export function HSSimpleLoading({theme}: {theme?: string}) {
         .spinner {
           width: 100px;
           height: 100px;
-          border-right: 3px solid rgb(${colorset[6]},${colorset[7]},${colorset[8]});
-          border-bottom: 3px solid rgb(${colorset[6]},${colorset[7]},${colorset[8]});
+          border-right: 3px solid rgb(${colorset.light.red},${colorset.light.green},${colorset.light.blue});
+          border-bottom: 3px solid rgb(${colorset.light.red},${colorset.light.green},${colorset.light.blue});
           border-radius: 50%;
           display: inline-block;
           position: relative;
@@ -32,7 +32,7 @@ export function HSSimpleLoading({theme}: {theme?: string}) {
           height: 62px;
           border-radius: 50%;
           border-top: 3px solid;
-          border-color: rgb(${colorset[9]},${colorset[10]},${colorset[11]}) transparent;
+          border-color: rgb(${colorset.typo.red},${colorset.typo.green},${colorset.typo.blue}) transparent;
         }
         
         @keyframes rotation {

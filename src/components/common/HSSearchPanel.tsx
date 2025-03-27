@@ -8,7 +8,7 @@ import {HSButton} from "./input/HSButton";
 export function  HSSearchPanel({items, searchKey, updateSearchKey, searchValue, updateSearchValue,
   searchConditions, updateSearchConditions, executeSearch, multiple, theme}: 
   {items: HSItem[], searchKey: HSItem|null, updateSearchKey: (key: HSItem|null) => void, searchValue: string, updateSearchValue: (val: string) => void
-    searchConditions: HSKeyValue[], updateSearchConditions: Function, executeSearch: () => void, multiple?: boolean, theme?: string}) {
+    searchConditions: HSKV[], updateSearchConditions: Function, executeSearch: () => void, multiple?: boolean, theme?: string}) {
   
   function selectKey(item: HSItem) {
     updateSearchKey(item);

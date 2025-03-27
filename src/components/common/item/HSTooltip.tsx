@@ -10,7 +10,7 @@ export function HSTooltip({text, active, width, left, top, theme}: {text: string
         borderRadius: 3, 
         position: 'absolute', 
         transition: 'all 0.3s ease', 
-        background: `rgb(${colorset[0]},${colorset[1]},${colorset[2]})`, 
+        background: `rgb(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue})`, 
         color: '#FFF', 
         overflow: 'auto',
         left, top, width,

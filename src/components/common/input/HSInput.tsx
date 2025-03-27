@@ -31,7 +31,7 @@ export function HSInput({type, value, setValue, width, theme, name, pushEnter}:
 
   return (
     <root.div>
-      <div style={{position: 'relative', width: width ? width : '100%', borderBottom: `1px solid rgb(${colorset[0]},${colorset[1]},${colorset[2]}`, paddingTop: 10, paddingBottom: 2}}>
+      <div style={{position: 'relative', width: width ? width : '100%', borderBottom: `1px solid rgb(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue}`, paddingTop: 10, paddingBottom: 2}}>
         {name ? <span onClick={clickPlaceholder} className={`hs-input-placeholder ${focused || value.length > 0 ? 'focused' : ''}`}>
           {name}
         </span> : <></>}
@@ -46,7 +46,7 @@ export function HSInput({type, value, setValue, width, theme, name, pushEnter}:
       <style>{`
         .hs-input-placeholder {
           position: absolute;
-          color: rgb(${colorset[0]},${colorset[1]},${colorset[2]});
+          color: rgb(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue});
           font-size: 12px;
           top: 10px;
           left: 2px;

@@ -18,13 +18,13 @@ export function HSRadio({selected, value, text, theme, onClick}: {selected: stri
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              boxShadow: selected === value ? `0 0 8px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.5)` : 'none',
-              background: selected === value ? `rgb(${colorset[0]},${colorset[1]},${colorset[2]})` : '#FFF',
+              boxShadow: selected === value ? `0 0 8px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.5)` : 'none',
+              background: selected === value ? `rgb(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue})` : '#FFF',
             }
           }>
             <div style={{width: '8px', aspectRatio: '1/1', background: '#FFF', borderRadius: '50%'}}/>
           </div>
-          <span style={{color: `rgb(${colorset[9]},${colorset[10]},${colorset[11]})`}}>{text}</span>
+          <span style={{color: `rgb(${colorset.typo.red},${colorset.typo.green},${colorset.typo.blue})`}}>{text}</span>
         </label>
       </div>
     </root.div>

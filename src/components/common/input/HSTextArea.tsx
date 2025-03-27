@@ -69,13 +69,13 @@ export function HSTextArea({name, value, setValue, theme, width, height}:
         .hs-textarea-wrap {
           display: flex;
           background: transparent;
-          border: 2px groove rgb(${colorset[6]},${colorset[7]},${colorset[8]});
+          border: 2px groove rgb(${colorset.light.red},${colorset.light.green},${colorset.light.blue});
         }
         .hs-textarea-input-wrap {
           flex: 1; 
           padding: 15px 0 2px 0;
           position: relative;
-          box-shadow: 0 0 15px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.3);
+          box-shadow: 0 0 15px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.3);
         }
         .hs-textarea {
           border: none;
@@ -84,14 +84,14 @@ export function HSTextArea({name, value, setValue, theme, width, height}:
           resize: none;
           outline: none;
           font-size: 12px;
-          color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
+          color: rgb(${colorset.typo.red},${colorset.typo.green},${colorset.typo.blue});
           padding: 0 5px 0 5px;
           background: transparent;
           tab-size: 2;
         }
         .hs-textarea-title {
           position: absolute;
-          color: rgb(${colorset[3]},${colorset[4]},${colorset[5]});
+          color: rgb(${colorset.deep.red},${colorset.deep.green},${colorset.deep.blue});
           font-size: 9px;
           top: 0;
           left: 0;
@@ -122,47 +122,47 @@ export function HSTextArea({name, value, setValue, theme, width, height}:
         }
         
         .slight-scroll::-webkit-scrollbar-track:hover {
-          background-color: rgba(${colorset[0]},${colorset[1]},${colorset[2]},.05);
-          box-shadow: inset 1px 0 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.1)
+          background-color: rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},.05);
+          box-shadow: inset 1px 0 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},.1)
         }
         
         .slight-scroll::-webkit-scrollbar-track:horizontal:hover {
-          box-shadow: inset 0 1px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.1)
+          box-shadow: inset 0 1px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},.1)
         }
         
         .slight-scroll::-webkit-scrollbar-track:active {
-          background-color: rgba(${colorset[0]},${colorset[1]},${colorset[2]},.05);
-          box-shadow: inset 1px 0 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.14),inset -1px 0 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.07)
+          background-color: rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},.05);
+          box-shadow: inset 1px 0 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},.14),inset -1px 0 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},.07)
         }
         
         .slight-scroll::-webkit-scrollbar-track:horizontal:active {
-          box-shadow: inset 0 1px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.14),inset 0 -1px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.07)
+          box-shadow: inset 0 1px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},.14),inset 0 -1px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},.07)
         }
         
         .slight-scroll::-webkit-scrollbar-thumb {
-          background-color: rgba(${colorset[0]},${colorset[1]},${colorset[2]},.2);
+          background-color: rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},.2);
           background-clip: padding-box;
           border: solid transparent;
           border-width: 1px 1px 1px 6px;
           min-height: 28px;
           padding: 100px 0 0;
-          box-shadow: inset 1px 1px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.1),inset 0 -1px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.07)
+          box-shadow: inset 1px 1px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},.1),inset 0 -1px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},.07)
         }
         
         .slight-scroll::-webkit-scrollbar-thumb:horizontal {
           border-width: 6px 1px 1px;
           padding: 0 0 0 100px;
-          box-shadow: inset 1px 1px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.1),inset -1px 0 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},.07)
+          box-shadow: inset 1px 1px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},.1),inset -1px 0 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},.07)
         }
         
         .slight-scroll::-webkit-scrollbar-thumb:hover {
-          background-color: rgba(${colorset[0]},${colorset[1]},${colorset[2]},.4);
-          box-shadow: inset 1px 1px 1px rgba(${colorset[0]},${colorset[1]},${colorset[2]},.25)
+          background-color: rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},.4);
+          box-shadow: inset 1px 1px 1px rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},.25)
         }
         
         .slight-scroll::-webkit-scrollbar-thumb:active {
-          background-color: rgba(${colorset[0]},${colorset[1]},${colorset[2]},.05);
-          box-shadow: inset 1px 1px 3px rgba(${colorset[0]},${colorset[1]},${colorset[2]},.35)
+          background-color: rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},.05);
+          box-shadow: inset 1px 1px 3px rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},.35)
         }
         
         .slight-scroll::-webkit-scrollbar-corner {

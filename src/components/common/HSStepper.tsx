@@ -15,8 +15,8 @@ export function HSStepper({items, selected, clickTab, theme}: {items: HSItem[], 
         <div style={{height: '100%', width: 45, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <SimpleArrow theme={theme}/>
         </div> : <></>} 
-        <div className="hs-stepper-step" key={index} onClick={() => clickTab(item.raw)}>
-          <span style={{fontWeight: item.raw === selected ? 800 : 400, fontSize: 14}}>{`Step ${index}`}</span><br/>
+        <div className={`hs-stepper-step ${item.raw === selected ? 'focused' : ''}`} key={index} onClick={() => clickTab(item.raw)}>
+          <span style={{fontSize: 14}}>{`Step ${index + 1}`}</span><br/>
           <span style={{fontSize: 12}}>{item.display}</span>
         </div>
       </React.Fragment>
@@ -25,14 +25,17 @@ export function HSStepper({items, selected, clickTab, theme}: {items: HSItem[], 
         .hs-stepper {
           display: flex;
           height: 38px;
-          color: rgb(${colorset[0]},${colorset[1]},${colorset[2]});
+          color: rgb(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue});
         }
         .hs-stepper-step {
           cursor: pointer;
           transition: all 0.3s ease;
         }
         .hs-stepper-step:hover {
-          color: rgb(${colorset[6]},${colorset[7]},${colorset[8]});
+          color: rgb(${colorset.light.red},${colorset.light.green},${colorset.light.blue});
+        }
+        .hs-stepper-step.focused {
+          color: rgb(${colorset.light.red},${colorset.light.green},${colorset.light.blue});
         }
       `}</style>
     </div>

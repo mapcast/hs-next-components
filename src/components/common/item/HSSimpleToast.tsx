@@ -27,7 +27,7 @@ export function HSSimpleToast({text, active, close, theme}: {text: string, activ
           left: 50%;
           transform: translateX(-50%);
           background-color: #FFF;
-          color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
+          color: rgb(${colorset.typo.red},${colorset.typo.green},${colorset.typo.blue});
           font-weight: 800;
           font-size: 14px;
           padding: 0 20px;
@@ -37,7 +37,7 @@ export function HSSimpleToast({text, active, close, theme}: {text: string, activ
           opacity: 0;
           transition: all 0.5s ease-out;
           height: 65px;
-          box-shadow: 0 0 25px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.7);
+          box-shadow: 0 0 25px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.7);
         }
         
         .simple-toast.active {

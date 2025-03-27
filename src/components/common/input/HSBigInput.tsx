@@ -40,7 +40,7 @@ export function HSBigInput({name, value, setValue, imageSrc, width, theme, type}
           .big-input-wrap {
              height: 50px;
             display: flex;
-            border-bottom: 2px solid rgb(${colorset[0]},${colorset[1]},${colorset[2]});
+            border-bottom: 2px solid rgb(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue});
           }
           .big-input-image-wrap {
             display: flex; 
@@ -62,11 +62,11 @@ export function HSBigInput({name, value, setValue, imageSrc, width, theme, type}
             background: transparent;
             border: none;
             width: calc(100% - 17px);
-            color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
+            color: rgb(${colorset.typo.red},${colorset.typo.green},${colorset.typo.blue});
           }
           .big-input-placeholder {
             position: absolute;
-            color: rgb(${colorset[0]},${colorset[1]},${colorset[2]});
+            color: rgb(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue});
             font-size: 12px;
             top: 24px;
             left: 2px;

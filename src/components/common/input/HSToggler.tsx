@@ -31,20 +31,20 @@ function HsTogglerButton({item, theme}: {item: Toggleable, theme?: string}) {
           border: none;
           transition: all 0.5s ease;
           outline: none;
-          border-left: 1px solid rgb(${colorset[0]},${colorset[1]},${colorset[2]});
-          color: rgb(${colorset[9]},${colorset[10]},${colorset[11]});
+          border-left: 1px solid rgb(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue});
+          color: rgb(${colorset.typo.red},${colorset.typo.green},${colorset.typo.blue});
         }
         .hs-toggle-button:hover {
           background: rgba(255,255,255,0.2);
-          box-shadow: 0 0 20px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.7);
+          box-shadow: 0 0 20px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.7);
         }
         .hs-toggle-button.active {
           background: rgba(255,255,255,0.2);
-          box-shadow: 0 0 20px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0.7);
+          box-shadow: 0 0 20px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0.7);
         }
         .hs-toggle-button.active:hover {
           background: rgba(255,255,255,0);
-          box-shadow: 0 0 20px 0 rgba(${colorset[0]},${colorset[1]},${colorset[2]},0);
+          box-shadow: 0 0 20px 0 rgba(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue},0);
         }
       `}</style>
     </button>
@@ -69,11 +69,11 @@ export function HSToggler({width, items, theme}: {width: number, items: Toggleab
           .hs-toggler {
             background: #FFF;
             display: flex;
-            border: 1px solid rgb(${colorset[0]},${colorset[1]},${colorset[2]});
+            border: 1px solid rgb(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue});
             border-radius: 5px;
             min-height: 25px;
             justify-content: space-between;
-            background: rgb(${colorset[6]},${colorset[7]},${colorset[8]});
+            background: rgb(${colorset.light.red},${colorset.light.green},${colorset.light.blue});
             width: ${width}px;
           }
         `}</style>

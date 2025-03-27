@@ -18,7 +18,7 @@ export function HSKeyValue({name, value, theme, selected, onClick, width, height
       <div style={{width: `${keyRatio ? keyRatio : 50}%`}}>
         <div style={{
           height: fontSize ? fontSize + 6 : 16,
-          borderRight: `1px solid ${selected ? `rgb(${colorset[0]},${colorset[1]},${colorset[2]})` : `rgb(${colorset[9]},${colorset[10]},${colorset[11]})`}`
+          borderRight: `1px solid ${selected ? `rgb(${colorset.normal.red},${colorset.normal.green},${colorset.normal.blue})` : `rgb(${colorset.typo.red},${colorset.typo.green},${colorset.typo.blue})`}`
         }}>
           {name}
         </div>
